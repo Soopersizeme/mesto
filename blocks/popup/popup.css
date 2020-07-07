@@ -3,7 +3,6 @@
 @import url(./__item/popup__item.css);
 @import url(./__title/popup__title.css);
 @import url(./__close-icon/popup__close-icon.css);
-@import url(./__button-text/popup__button-text.css);
 @import url(./_opened/popup_opened.css);
 
 .popup {
