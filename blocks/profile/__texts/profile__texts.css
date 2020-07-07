@@ -1,0 +1,15 @@
+.profile__texts {
+  display: grid;
+  grid-template-areas: 
+  'title' 'button'
+  'subtitle';
+  align-items: center;
+  gap: 16px 17px;
+}
+
+@media screen and (max-width: 720px) {
+  .profile__texts {
+    text-align: center;
+    gap: 14px 6px;
+  }
+}
