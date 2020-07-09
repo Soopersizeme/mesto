@@ -1,6 +1,5 @@
 .popup__item {
   border: 0;
-  height: 27px;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin: 36px 36px 0;
@@ -9,11 +8,7 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-  text-overflow: ellipsis;
   width: 358px;
-  max-width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 @media screen and (max-width: 530px) {
