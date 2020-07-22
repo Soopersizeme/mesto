@@ -1,0 +1,18 @@
+.card__button-delete {
+  width: 18px;
+  height: 19px;
+  border: none;
+  background-image: url(../../../images/Trash-bin.svg);
+  background-color: transparent;
+  background-size: cover;
+  align-self: flex-start;
+  position: absolute;
+  margin: 18px 0 0 249px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.card__button-delete:hover {
+  opacity: 0.6;
+  transition: 0.3s ease-in;
+}
