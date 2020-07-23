@@ -6,6 +6,7 @@
   grid-gap: 18px;
   justify-items: center;
   list-style: none;
+  padding: 0;
 }
 
 @media screen and (max-width: 900px) {

@@ -15,7 +15,7 @@ const editPopupClose = editPopup.querySelector(".popup__close-icon");
 const addPopupClose = addPopup.querySelector(".popup__close-icon");
 const imagePopupClose = imagePopup.querySelector(".popup__image-close-icon");
 
-//внутренности модалки тип картинка
+
 const imagePopupTitle = imagePopup.querySelector(".popup__subtitle");
 const imagePopupPicture = imagePopup.querySelector(".popup__image");
 
@@ -52,7 +52,7 @@ const initialCards = [
     },
 ];
 
-//инпуты и их названия
+
 let nameInput = document.querySelector("#name");
 let jobInput = document.querySelector("#job");
 let placeNameInput = document.querySelector("#place");
@@ -87,7 +87,7 @@ function formSubmitHandlerAddCard(evt) {
 };
 
 
-//перебираем элементы массива
+
 initialCards.forEach((cardData) => {
     renderCards(cardData);
 });
