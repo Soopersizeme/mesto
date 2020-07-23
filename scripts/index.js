@@ -62,24 +62,30 @@ let profileJob = document.querySelector(".profile__subtitle");
 
 function popupOpened(popup) {
     popup.classList.add("popup_opened");
-}
+};
 
 function popupClosed(popup) {
     popup.classList.remove("popup_opened");
-}
+};
+
+function imagePopupOpen(cardText, cardPic) { 
+    imagePopupTitle.textContent = cardText.textContent; 
+    imagePopupPicture.src = cardPic.src;
+};
 
 function formSubmitHandlerEditProfile(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     popupClosed(editPopup);
-}
+};
 
 function formSubmitHandlerAddCard(evt) {
     evt.preventDefault();
     renderCards({ name: placeNameInput.value, link: linkPlaceInput.value });
     popupClosed(addPopup);
-}
+};
+
 
 //перебираем элементы массива
 initialCards.forEach((cardData) => {
@@ -102,16 +108,15 @@ function createCards(cardData) {
     cardDeleteBtn.addEventListener("click", () => {
         cardDeleteBtn.closest(".card").remove();
     });
-
-    cardImg.addEventListener("click", () => {
-        imagePopupTitle.textContent = cardTitle.textContent;
-        imagePopupPicture.src = cardImg.src;
-        popupOpened(imagePopup);
+    
+    cardImg.addEventListener("click", () => { 
+        imagePopupOpen(cardTitle, cardImg);
+        popupOpened(imagePopup);  
     }); 
 
     cardTitle.textContent = cardData.name;
     cardImg.src = cardData.link;
-
+ 
     return cardElement;
 };
 
