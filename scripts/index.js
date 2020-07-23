@@ -81,22 +81,7 @@ function formSubmitHandlerAddCard(evt) {
     popupClosed(addPopup);
 }
 
-
-editPopupOpen.addEventListener("click", () => { nameInput.value = profileName.textContent; jobInput.value = profileJob.textContent; popupOpened(editPopup);});
-addPopupOpen.addEventListener("click", () => popupOpened(addPopup));
-
-editPopupClose.addEventListener("click", () => popupClosed(editPopup));
-addPopupClose.addEventListener("click", () => popupClosed(addPopup));
-imagePopupClose.addEventListener("click", () => popupClosed(imagePopup));
-
-editForm.addEventListener("submit", formSubmitHandlerEditProfile);
-addCardForm.addEventListener("submit", formSubmitHandlerAddCard);
-
-
-
-
-
-
+//перебираем элементы массива
 initialCards.forEach((cardData) => {
     renderCards(cardData);
 });
@@ -129,3 +114,20 @@ function createCards(cardData) {
 
     return cardElement;
 };
+
+
+editPopupOpen.addEventListener("click", () => { nameInput.value = profileName.textContent; jobInput.value = profileJob.textContent; popupOpened(editPopup);});
+addPopupOpen.addEventListener("click", () => popupOpened(addPopup));
+
+editPopupClose.addEventListener("click", () => popupClosed(editPopup));
+addPopupClose.addEventListener("click", () => popupClosed(addPopup));
+imagePopupClose.addEventListener("click", () => popupClosed(imagePopup));
+
+editForm.addEventListener("submit", formSubmitHandlerEditProfile);
+addCardForm.addEventListener("submit", formSubmitHandlerAddCard);
+
+
+
+
+
+
