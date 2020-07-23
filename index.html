@@ -23,7 +23,7 @@
                     </div>
                     <button class="profile__add-button" type="button" aria-label="кнопка добавить"></button>
                 </section>
-                <section class="cards"></section>
+                <ul class="cards"></ul>
                 <footer class="footer">
                     <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
                 </footer>
@@ -44,7 +44,7 @@
                         <form class="form" method="GET" action="#" name="form">
                             <h2 class="popup__title">Новое место</h2>
                             <input class="popup__item" type="text" name="place" id="place" value="" placeholder="Название" required aria-label="попап форма" />
-                            <input class="popup__item" type="text" name="link" id="link" value="" placeholder="Ссылка на картинку" required aria-label="попап форма" />
+                            <input class="popup__item" type="url" name="link" id="link" value="" placeholder="Ссылка на картинку" required aria-label="попап форма" />
                             <button class="popup__save-button" type="submit" aria-label="кнопка сохранить">Создать</button>
                         </form>
                     </div>
@@ -60,14 +60,14 @@
         </div>
 
         <template class="template-card">
-            <div class="card">
+            <li class="card">
                 <button class="card__button-delete" type="button" aria-label="кнопка удалить"></button>
                 <img class="card__image" src="" alt="картиночка" />
                 <div class="card__elements">
                     <h2 class="card__title"></h2>
                     <button class="card__button-like" type="button" aria-label="кнопка лайк"></button>
                 </div>
-            </div>
+            </li>
         </template>
 
         <script src="scripts/index.js"></script>

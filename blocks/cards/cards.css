@@ -5,6 +5,7 @@
   grid-template-columns: repeat(auto-fit, minmax(282px, max-content));
   grid-gap: 18px;
   justify-items: center;
+  list-style: none;
 }
 
 @media screen and (max-width: 900px) {
