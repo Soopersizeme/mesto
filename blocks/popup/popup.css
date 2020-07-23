@@ -3,8 +3,6 @@
 @import url(./__item/popup__item.css);
 @import url(./__title/popup__title.css);
 @import url(./__close-icon/popup__close-icon.css);
-@import url(./_type/popup_type_add-card.css);
-@import url(./_type/popup_type_edit-profile.css);
 @import url(./__image/popup__image.css);
 @import url(./__image-container/popup__image-container.css);
 @import url(./__subtitle/popup__subtitle.css);
