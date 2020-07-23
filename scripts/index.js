@@ -52,7 +52,7 @@ const initialCards = [
     },
 ];
 
-
+//инпуты и их названия
 let nameInput = document.querySelector("#name");
 let jobInput = document.querySelector("#job");
 let placeNameInput = document.querySelector("#place");
@@ -103,11 +103,11 @@ function createCards(cardData) {
         cardDeleteBtn.closest(".card").remove();
     });
 
-    cardImg.addEventListener("click", function () {
+    cardImg.addEventListener("click", () => {
         imagePopupTitle.textContent = cardTitle.textContent;
         imagePopupPicture.src = cardImg.src;
         popupOpened(imagePopup);
-    });
+    }); 
 
     cardTitle.textContent = cardData.name;
     cardImg.src = cardData.link;
