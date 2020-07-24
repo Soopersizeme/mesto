@@ -15,13 +15,11 @@ const editPopupClose = editPopup.querySelector(".popup__close-icon");
 const addPopupClose = addPopup.querySelector(".popup__close-icon");
 const imagePopupClose = imagePopup.querySelector(".popup__image-close-icon");
 
-
 const imagePopupTitle = imagePopup.querySelector(".popup__subtitle");
 const imagePopupPicture = imagePopup.querySelector(".popup__image");
 
 const editForm = editPopup.querySelector(".form");
 const addCardForm = addPopup.querySelector(".form");
-
 
 //карточки отображаемые на странице по дефолту
 const initialCards = [
@@ -52,13 +50,12 @@ const initialCards = [
     },
 ];
 
-
-let nameInput = document.querySelector("#name");
-let jobInput = document.querySelector("#job");
-let placeNameInput = document.querySelector("#place");
-let linkPlaceInput = document.querySelector("#link");
-let profileName = document.querySelector(".profile__title");
-let profileJob = document.querySelector(".profile__subtitle");
+const nameInput = document.querySelector("#name");
+const jobInput = document.querySelector("#job");
+const placeNameInput = document.querySelector("#place");
+const linkPlaceInput = document.querySelector("#link");
+const profileName = document.querySelector(".profile__title");
+const profileJob = document.querySelector(".profile__subtitle");
 
 function popupOpened(popup) {
     popup.classList.add("popup_opened");
@@ -85,12 +82,6 @@ function formSubmitHandlerAddCard(evt) {
     renderCards({ name: placeNameInput.value, link: linkPlaceInput.value });
     popupClosed(addPopup);
 };
-
-
-
-initialCards.forEach((cardData) => {
-    renderCards(cardData);
-});
 
 function renderCards(cardData) {
     sectionCards.prepend(createCards(cardData));
@@ -120,7 +111,6 @@ function createCards(cardData) {
     return cardElement;
 };
 
-
 editPopupOpen.addEventListener("click", () => { nameInput.value = profileName.textContent; jobInput.value = profileJob.textContent; popupOpened(editPopup);});
 addPopupOpen.addEventListener("click", () => popupOpened(addPopup));
 
@@ -130,6 +120,10 @@ imagePopupClose.addEventListener("click", () => popupClosed(imagePopup));
 
 editForm.addEventListener("submit", formSubmitHandlerEditProfile);
 addCardForm.addEventListener("submit", formSubmitHandlerAddCard);
+
+initialCards.forEach((cardData) => {
+    renderCards(cardData);
+});
 
 
 
