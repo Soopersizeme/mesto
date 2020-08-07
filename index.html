@@ -30,23 +30,28 @@
                 <div class="popup popup_type_edit-profile">
                     <div class="popup__container">
                         <button class="popup__close-icon" type="button" aria-label="кнопка закрыть"></button>
-                        <form class="form" method="GET" action="#" name="form">
-                            <h2 class="popup__title">Редактировать профиль</h2>
-                            <input class="popup__item" type="text" name="name" id="name" value="" placeholder="ваше имя" required aria-label="попап форма" />
-                            <input class="popup__item" type="text" name="job" id="job" value="" placeholder="ваша деятельность" required aria-label="попап форма" />
-                            <button class="popup__save-button" type="submit" aria-label="кнопка сохранить">Сохранить</button>
-                        </form>
+                        
+                            <form class="popup__form" method="GET" action="#" name="form" novalidate>
+                                <h2 class="popup__title">Редактировать профиль</h2>
+                                <input class="popup__input" type="text" name="name" id="name" value="" placeholder="ваше имя" required aria-label="попап форма" minlength="2" autocomplete="off"/>
+                                <span class='popup__input-error' id='name-error'></span>
+                                <input class="popup__input" type="text" name="job" id="job" value="" placeholder="ваша деятельность" required aria-label="попап форма" minlength="2" autocomplete="off"/>
+                                <span class='form__input-error' id='job-error'></span>
+                                <button class="popup__save-button" type="submit" aria-label="кнопка сохранить">Сохранить</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <div class="popup popup_type_add-card">
-                    <div class="popup__container">
-                        <button class="popup__close-icon" type="button" aria-label="кнопка закрыть"></button>
-                        <form class="form" method="GET" action="#" name="form">
-                            <h2 class="popup__title">Новое место</h2>
-                            <input class="popup__item" type="text" name="place" id="place" value="" placeholder="Название" required aria-label="попап форма" />
-                            <input class="popup__item" type="url" name="link" id="link" value="" placeholder="Ссылка на картинку" required aria-label="попап форма" />
-                            <button class="popup__save-button" type="submit" aria-label="кнопка сохранить">Создать</button>
-                        </form>
+                    <div class="popup popup_type_add-card">
+                        <div class="popup__container">
+                            <button class="popup__close-icon" type="button" aria-label="кнопка закрыть"></button>
+                            <form class="popup__form" method="GET" action="#" name="form" novalidate>
+                                <h2 class="popup__title">Новое место</h2>
+                                <input class="popup__input" type="text" name="place" id="place" value="" placeholder="Название" required aria-label="попап форма" autocomplete="off"/>
+                                <span class='popup__input-error' id='place-error'></span>
+                                <input class="popup__input" type="url" name="link" id="link" value="" placeholder="Ссылка на картинку" required aria-label="попап форма" autocomplete="off"/>
+                                <span class='popup__input-error' id='link-error'></span>
+                                <button class="popup__save-button" type="submit" aria-label="кнопка сохранить">Создать</button>
+                            </form>
                     </div>
                 </div>
                 <div class="popup popup_type_image">
@@ -69,7 +74,8 @@
                 </div>
             </li>
         </template>
-
+        <script src="scripts/validation.js"></script>
         <script src="scripts/index.js"></script>
+        
     </body>
 </html>

@@ -1,4 +1,4 @@
-.popup__item {
+.popup__input {
   border: 0;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 530px) {
-  .popup__item {
+  .popup__input {
     width: 245px;
     margin: 18px 18px 0;
     font-size: 12px;
