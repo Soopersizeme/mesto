@@ -64,23 +64,19 @@ const profileJob = document.querySelector(".profile__subtitle");
 
 function popupOpened(popup) {
     popup.classList.add("popup_opened");
-    if (popup.classList.contains("popup_opened")) {
         document.addEventListener('keydown', (evt) => {
           if (evt.keyCode === 27) {
             popup.classList.remove("popup_opened");
           }
         });
-      }
 }
 
 function popupClosed(popup) {
-    if (popup.classList.contains("popup_opened")) {
         document.removeEventListener('keydown', (evt) => {
           if (evt.keyCode === 27) {
             popup.classList.remove("popup_opened");
           }
         });
-      }
   popup.classList.remove("popup_opened");
 }
 
