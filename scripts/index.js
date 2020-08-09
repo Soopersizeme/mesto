@@ -106,6 +106,7 @@ function formSubmitHandlerAddCard(evt) {
   popupClosed(addPopup);
   placeNameInput.value = "";
   linkPlaceInput.value = "";
+  addCardForm.reset()
 }
 
 function renderCards(cardData) {
