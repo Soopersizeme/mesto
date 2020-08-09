@@ -63,30 +63,30 @@ const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 
 function popupOpened(popup) {
-    popup.classList.add("popup_opened");
-        document.addEventListener('keydown', (evt) => {
-          if (evt.keyCode === 27) {
-            popup.classList.remove("popup_opened");
-          }
-        });
+   popup.classList.add("popup_opened");
+   document.addEventListener('keydown', escClosingPopup);
 }
 
 function popupClosed(popup) {
-        document.removeEventListener('keydown', (evt) => {
-          if (evt.keyCode === 27) {
-            popup.classList.remove("popup_opened");
-          }
-        });
   popup.classList.remove("popup_opened");
+  document.removeEventListener('keydown', escClosingPopup);
 }
 
 function closingPopupClickToOverlay(popup) {
     popup.addEventListener('click', (evt => {
       if(evt.target.classList.contains('popup_opened')) {
         popupClosed(popup);
-      }
-    })
-    )}
+    }
+  })
+)}
+
+function escClosingPopup(evt) {
+  if (evt.key === 'Escape') {
+    popupClosed(editPopup);
+    popupClosed(addPopup);
+    popupClosed(imagePopup);
+  }
+}
 
 function imagePopupOpen(cardText, cardPic) {
   imagePopupTitle.textContent = cardText.textContent;
@@ -104,6 +104,8 @@ function formSubmitHandlerAddCard(evt) {
   evt.preventDefault();
   renderCards({ name: placeNameInput.value, link: linkPlaceInput.value });
   popupClosed(addPopup);
+  placeNameInput.value = "";
+  linkPlaceInput.value = "";
 }
 
 function renderCards(cardData) {
