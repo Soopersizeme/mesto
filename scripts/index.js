@@ -21,6 +21,8 @@ const imagePopupPicture = imagePopup.querySelector(".popup__image");
 const editForm = editPopup.querySelector(".popup__form");
 const addCardForm = addPopup.querySelector(".popup__form");
 
+const submitButtonSelector = document.querySelectorAll('.popup__save-button')
+
 //карточки отображаемые на странице по дефолту
 const initialCards = [
   {
@@ -106,7 +108,6 @@ function formSubmitHandlerAddCard(evt) {
   popupClosed(addPopup);
   placeNameInput.value = "";
   linkPlaceInput.value = "";
-  addCardForm.reset()
 }
 
 function renderCards(cardData) {
@@ -140,7 +141,7 @@ function createCards(cardData) {
 }
 
 editPopupOpen.addEventListener("click", () => { nameInput.value = profileName.textContent; jobInput.value = profileJob.textContent; popupOpened(editPopup);});
-addPopupOpen.addEventListener("click", () => popupOpened(addPopup));
+addPopupOpen.addEventListener("click", () => {popupOpened(addPopup); enableValidation(object)});
 
 editPopupClose.addEventListener("click", () => popupClosed(editPopup));
 addPopupClose.addEventListener("click", () => popupClosed(addPopup));
