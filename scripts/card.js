@@ -1,5 +1,5 @@
-import {_imagePopup, _imagePopupTitle, _imagePopupPicture, } from "./utils.js"
-import { openedPopup } from "./index.js"
+import { imagePopup, imagePopupTitle, imagePopupPicture, } from "./utils.js"
+import { openPopup } from "./index.js"
 
 export default class Card {
   constructor(cardData, cardSelector) {
@@ -33,22 +33,22 @@ export default class Card {
     return this._cardElement;
   }
 
-  _popupOpeningImg = () => {
-    _imagePopupPicture.src = this._cardImg.src;
-    _imagePopupTitle.textContent = this._cardTitle.textContent;
-    _imagePopupPicture.alt = this._cardTitle.textContent;
+  _openingPopupImg = () => {
+    imagePopupPicture.src = this._cardImg.src;
+    imagePopupTitle.textContent = this._cardTitle.textContent;
+    imagePopupPicture.alt = this._cardTitle.textContent;
 
-    openedPopup(_imagePopup);
+    openPopup(imagePopup);
   };
 
-  _cardDeleted = () => {
+  _deleteCard = () => {
     this._cardElement.remove();
     this._cardElement = null;
   };
 
   _setEventListeners() {
     this._cardBtnLike.addEventListener("click", (evt) => {evt.target.classList.toggle("card__button-like_active");});
-    this._cardDeleteBtn.addEventListener("click", this._cardDeleted);
-    this._cardImg.addEventListener("click", this._popupOpeningImg);
+    this._cardDeleteBtn.addEventListener("click", this._deleteCard);
+    this._cardImg.addEventListener("click", this._openingPopupImg);
   }
 }
