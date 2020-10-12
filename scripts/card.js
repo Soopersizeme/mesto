@@ -1,11 +1,9 @@
-import { imagePopup, imagePopupTitle, imagePopupPicture, } from "./utils.js"
-import { openPopup } from "./index.js"
-
 export default class Card {
-  constructor(cardData, cardSelector) {
+  constructor(cardData, cardSelector, handleCardClick) {
     this._cardSelector = cardSelector;
     this._name = cardData.name;
     this._link = cardData.link;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -32,14 +30,6 @@ export default class Card {
 
     return this._cardElement;
   }
-
-  _openingPopupImg = () => {
-    imagePopupPicture.src = this._cardImg.src;
-    imagePopupTitle.textContent = this._cardTitle.textContent;
-    imagePopupPicture.alt = this._cardTitle.textContent;
-
-    openPopup(imagePopup);
-  };
 
   _deleteCard = () => {
     this._cardElement.remove();

@@ -1,10 +1,12 @@
-import Card from "./card.js";
-import formValidator from "./formValidator.js"
+import Card from "./Card.js";
+import formValidator from "./FormValidator.js"
+import Section from "./Section.js"
+import PopupWithImage from './PopupWithImage.js';
 
 //модальные окона
 const editPopup = document.querySelector(".popup_type_edit-profile");
 const addPopup = document.querySelector(".popup_type_add-card");
-const imagePopup = document.querySelector(".popup_type_image");
+//const imagePopup = document.querySelector(".popup_type_image");
 
 //открытие модальных окон
 const editPopupOpen = document.querySelector(".profile__edit-button");
@@ -13,7 +15,7 @@ const addPopupOpen = document.querySelector(".profile__add-button");
 //закрытие модальных окон
 const editPopupClose = editPopup.querySelector(".popup__close-icon");
 const addPopupClose = addPopup.querySelector(".popup__close-icon");
-const imagePopupClose = imagePopup.querySelector(".popup__image-close-icon");
+//const imagePopupClose = imagePopup.querySelector(".popup__image-close-icon");
 
 const editForm = editPopup.querySelector(".popup__form");
 const addCardForm = addPopup.querySelector(".popup__form");
@@ -74,79 +76,36 @@ const settings = {
 const editPopupValidator = new formValidator (settings, editPopup);
 const addPopupValidator = new formValidator (settings, addPopup);
 
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closingEscPopup);
-}
+const imagePopup = new PopupWithImage(".popup_type_image");
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closingEscPopup);
-}
-
-function closingPopupClickToOverlay(popup) {
-  popup.addEventListener("click", (evt) => {
-    if (evt.target.classList.contains("popup_opened")) {
-      closePopup(popup);
-    }
-  });
-}
-
-function closingEscPopup(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".popup_opened"));
-  }
-}
-
-function handleEditProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  closePopup(editPopup);
-}
-
-function handleAddCardFormSubmit(evt) {
-  evt.preventDefault();
-  addNewCard({ name: placeNameInput.value, link: linkPlaceInput.value });
-  closePopup(addPopup);
-  placeNameInput.value = "";
-  linkPlaceInput.value = "";
-}
 
 function addNewCard(cardData) {
-  const card = new Card(cardData, "#template-card");
+  const card = new Card(cardData, "#template-card", 
+  function handleCardClick() {
+    imagePopup.open({name, link});
+    imagePopup.setEventListeners();
+  }
+);
   const cardElement = card.createCard();
   cardContainer.prepend(cardElement);
 }
 
-editPopupOpen.addEventListener("click", () => {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-  openPopup(editPopup);
-});
+const section = new Section({
+  items: initialCards, 
+  renderer: addNewCard}, 
+  cardContainer);
 
-addPopupOpen.addEventListener("click", () => { openPopup(addPopup);});
+section.renderItems();
 
-editPopupClose.addEventListener("click", () => closePopup(editPopup));
-addPopupClose.addEventListener("click", () => closePopup(addPopup));
-imagePopupClose.addEventListener("click", () => closePopup(imagePopup));
 
-editForm.addEventListener("submit", handleEditProfileFormSubmit);
-addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-initialCards.forEach((cardData) => {
-  addNewCard(cardData);
-});
 
 // Закрытие всех попапов по нажатию на оверлай
-closingPopupClickToOverlay(editPopup);
-closingPopupClickToOverlay(addPopup);
-closingPopupClickToOverlay(imagePopup);
+
 
 // проверка на валидность формы 
 editPopupValidator.enableValidation();
 addPopupValidator.enableValidation();
 
-export { openPopup };
 
 
