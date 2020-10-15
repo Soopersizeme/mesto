@@ -1,25 +1,20 @@
-import Card from "./Card.js";
-import formValidator from "./FormValidator.js"
-import Section from "./Section.js"
-import PopupWithImage from './PopupWithImage.js';
+import './index.css';
+import Card from "../scripts/components/card.js";
+import formValidator from "../scripts/components/formValidator.js"
+import Section from "../scripts/components/Section.js"
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import UserInfo from '../scripts/components/UserInfo.js';
 
-//модальные окона
-const editPopup = document.querySelector(".popup_type_edit-profile");
-const addPopup = document.querySelector(".popup_type_add-card");
-//const imagePopup = document.querySelector(".popup_type_image");
+//модальные окна
+const editPopupModal = document.querySelector(".popup_type_edit-profile");
+const addPopupModal = document.querySelector(".popup_type_add-card");
 
 //открытие модальных окон
 const editPopupOpen = document.querySelector(".profile__edit-button");
 const addPopupOpen = document.querySelector(".profile__add-button");
 
-//закрытие модальных окон
-const editPopupClose = editPopup.querySelector(".popup__close-icon");
-const addPopupClose = addPopup.querySelector(".popup__close-icon");
-//const imagePopupClose = imagePopup.querySelector(".popup__image-close-icon");
-
-const editForm = editPopup.querySelector(".popup__form");
-const addCardForm = addPopup.querySelector(".popup__form");
-
+//контеинер для карточек
 const cardContainer = document.querySelector(".cards")
 
 //карточки отображаемые на странице по дефолту
@@ -58,10 +53,6 @@ const initialCards = [
 
 const nameInput = document.querySelector("#name");
 const jobInput = document.querySelector("#job");
-const placeNameInput = document.querySelector("#place");
-const linkPlaceInput = document.querySelector("#link");
-const profileName = document.querySelector(".profile__title");
-const profileJob = document.querySelector(".profile__subtitle");
 
 //массив классов для валидации форм
 const settings = {
@@ -73,21 +64,41 @@ const settings = {
   errorClass: "popup__input-error_invisible"
 };
 
-const editPopupValidator = new formValidator (settings, editPopup);
-const addPopupValidator = new formValidator (settings, addPopup);
+//инфа о профиле
+const userInfo = new UserInfo({nameSelector: '.profile__title', jobSelector: '.profile__subtitle'});
 
+//открытие попапа с картинкой
 const imagePopup = new PopupWithImage(".popup_type_image");
 
-
+//созадние карточек
 function addNewCard(cardData) {
-  const card = new Card(cardData, "#template-card", 
-  function handleCardClick() {
-    imagePopup.open({name, link});
-    imagePopup.setEventListeners();
-  }
+  const card = new Card(cardData, "#template-card", function openImgPopup() {
+    imagePopup.open(card);
+  },
 );
   const cardElement = card.createCard();
   cardContainer.prepend(cardElement);
+}
+
+const profileFormSubmitHandler = (data) => {
+  userInfo.setUserInfo(data.name, data.job);
+}
+
+const profileAddSubmitHandler = (cardData) => {
+  const link = cardData.link;
+  const name = cardData.place;
+  section.addItem(addNewCard({link, name}))
+}
+
+const openEditPopup = () => {
+  const userData = userInfo.getUserInfo()
+  nameInput.value = userData.name;
+  jobInput.value = userData.job;
+  editPopup.open()
+}
+
+const openAddPopup = () => {
+  addPopup.open()
 }
 
 const section = new Section({
@@ -97,15 +108,18 @@ const section = new Section({
 
 section.renderItems();
 
+const editPopup = new PopupWithForm(profileFormSubmitHandler, '.popup_type_edit-profile');
+const addPopup = new PopupWithForm(profileAddSubmitHandler , '.popup_type_add-card');
 
+addPopup.setEventListeners();
+editPopup.setEventListeners();
+imagePopup.setEventListeners();
 
+editPopupOpen.addEventListener('click', openEditPopup);
+addPopupOpen.addEventListener('click', openAddPopup);
 
-// Закрытие всех попапов по нажатию на оверлай
+const editPopupValidator = new formValidator (settings, editPopupModal);
+const addPopupValidator = new formValidator (settings, addPopupModal);
 
-
-// проверка на валидность формы 
 editPopupValidator.enableValidation();
 addPopupValidator.enableValidation();
-
-
-

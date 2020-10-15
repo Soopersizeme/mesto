@@ -31,14 +31,23 @@ export default class Card {
     return this._cardElement;
   }
 
-  _deleteCard = () => {
+  _deleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   };
 
   _setEventListeners() {
     this._cardBtnLike.addEventListener("click", (evt) => {evt.target.classList.toggle("card__button-like_active");});
-    this._cardDeleteBtn.addEventListener("click", this._deleteCard);
+    this._cardDeleteBtn.addEventListener("click", () => {
+      this._deleteCard()
+  });
     this._cardImg.addEventListener("click", this._openingPopupImg);
+    
+    this._cardImg.addEventListener('click', () => {
+      this._handleCardClick()
+  })
   }
 }
+
+
+

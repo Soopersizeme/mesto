@@ -4,7 +4,7 @@ export default class Popup {
       this._closeButton = document.querySelector(".popup__close-icon");
     };
   
-    _closingEscPopup = (evt) => {
+    _closingEscPopup(evt) {
       if (evt.key === "Escape") {
         this.close();
       }
