@@ -17,10 +17,12 @@ module.exports = {
       },
       // добавили правило для обработки файлов
       {
-        // регулярное выражение, которое ищет все файлы с такими расширениями
-        test: /\.(png|svg|jpg|gif|woff2|woff)$/,
-        // при обработке этих файлов нужно использовать file-loader
-        loader: 'file-loader'
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'file-loader?name=./images/[name].[ext]' // сюда складывать изображения
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=./vendor/[name].[ext]' // сюда  складывать шрифты
       },
       // аналогично добавьте правило для работы с html
       {
