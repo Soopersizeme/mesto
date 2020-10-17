@@ -1,6 +1,6 @@
 import './index.css';
-import Card from "../scripts/components/card.js";
-import formValidator from "../scripts/components/formValidator.js"
+import Card from "../scripts/components/Сard.js";
+import FormValidator from "../scripts/components/FormValidator.js"
 import Section from "../scripts/components/Section.js"
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
@@ -80,11 +80,11 @@ function addNewCard(cardData) {
   cardContainer.prepend(cardElement);
 }
 
-const profileFormSubmitHandler = (data) => {
+const handleProfileFormSubmit = (data) => {
   userInfo.setUserInfo(data.name, data.job);
 }
 
-const profileAddSubmitHandler = (cardData) => {
+const handleProfileAddSubmit = (cardData) => {
   const link = cardData.link;
   const name = cardData.place;
   section.addItem(addNewCard({link, name}))
@@ -108,8 +108,8 @@ const section = new Section({
 
 section.renderItems();
 
-const editPopup = new PopupWithForm(profileFormSubmitHandler, '.popup_type_edit-profile');
-const addPopup = new PopupWithForm(profileAddSubmitHandler , '.popup_type_add-card');
+const editPopup = new PopupWithForm(handleProfileFormSubmit, '.popup_type_edit-profile');
+const addPopup = new PopupWithForm(handleProfileAddSubmit , '.popup_type_add-card');
 
 addPopup.setEventListeners();
 editPopup.setEventListeners();
@@ -118,8 +118,8 @@ imagePopup.setEventListeners();
 editPopupOpen.addEventListener('click', openEditPopup);
 addPopupOpen.addEventListener('click', openAddPopup);
 
-const editPopupValidator = new formValidator (settings, editPopupModal);
-const addPopupValidator = new formValidator (settings, addPopupModal);
+const editPopupValidator = new FormValidator (settings, editPopupModal);
+const addPopupValidator = new FormValidator (settings, addPopupModal);
 
 editPopupValidator.enableValidation();
 addPopupValidator.enableValidation();

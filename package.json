@@ -1,17 +1,17 @@
 {
   "name": "mesto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Симпотичный ландинг, похожий на инстаграм.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack",
+    "build": "rimraf dist && webpack",
     "dev": "webpack-dev-server --open --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Soopersizeme/mesto.git"
   },
-  "author": "",
+  "author": "yaus_studio dev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Soopersizeme/mesto/issues"

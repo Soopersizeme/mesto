@@ -18,7 +18,3 @@
     font-size: 12px;
   }
 }
-
-.popup__input:invalid {
-  border-bottom: 1px solid red;
-}
